@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>DataTables customize</title>
+  
+  
+  <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css'>
+<link rel='stylesheet' href='https://cdn.datatables.net/s/bs-3.3.5/jqc-1.11.3,dt-1.10.10,af-2.1.0,fh-3.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Yet Another DataTables Column Filter</h1>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <table class="table table-bordered" id="data">
+          <thead>
+            <tr>
+              <th><span class="button-filter"></span>Some Data</th>
+              <th><span class="button-filter"></span>Numbers</th>
+              <th><span class="button-filter"></span>Yes / No</th>
+              <th><span class="button-filter"></span>Values</th>
+              <th><span class="button-filter"></span>Just a Date</th>
+              <th><span class="button-filter"></span>Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="lc-table__row">
+              <td>Some Data 1</td>
+              <td>1000</td>
+              <td>Yes</td>
+              <td>a_value,b_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 2</td>
+              <td>22</td>
+              <td>No</td>
+              <td>b_value,c_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag3</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 3</td>
+              <td>33</td>
+              <td>Yes</td>
+              <td>a_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag2</span><span class="lc-tags__item">Tag3</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 4</td>
+              <td>44</td>
+              <td>No</td>
+              <td>b_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 5</td>
+              <td>55</td>
+              <td>Yes</td>
+              <td>a_value,b_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 1</td>
+              <td>111</td>
+              <td>No</td>
+              <td>c_value,d_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 2</td>
+              <td>22</td>
+              <td>Yes</td>
+              <td>e_value,f_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag3</span><span class="lc-tags__item">Tag4</span><span class="lc-tags__item">Tag5</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 3</td>
+              <td>33</td>
+              <td>No</td>
+              <td>a_value,bb_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag5</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 4</td>
+              <td>44</td>
+              <td>Yes</td>
+              <td>a_value,f_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag4</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 5</td>
+              <td>55</td>
+              <td>No</td>
+              <td>a_value,c_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 1</td>
+              <td>10</td>
+              <td>Yes</td>
+              <td>a_value,b_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag3</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 2</td>
+              <td>22</td>
+              <td>No</td>
+              <td>d_value,aa_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 3</td>
+              <td>33</td>
+              <td>Yes</td>
+              <td>a_value,c_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 4</td>
+              <td>44</td>
+              <td>No</td>
+              <td>a_value,bb_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 5</td>
+              <td>55</td>
+              <td>Yes</td>
+              <td>c_value,e_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag2</span></td>
+            </tr>
+            <tr class="lc-table__row">
+              <td>Some Data 1</td>
+              <td>101</td>
+              <td>No</td>
+              <td>a_value,e_value</td>
+              <td>11/17/2014</td>
+              <td><span class="lc-tags__item">Tag1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+</script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>
+<script src='https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

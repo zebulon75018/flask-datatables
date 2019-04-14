@@ -60,7 +60,7 @@ columns = [ 'column_1', 'column_2', 'column_3', 'column_4']
 
 @app.route('/')
 def index():
-    return render_template('index.html', columns=columns)
+    return render_template('indexyafc.html', columns=columns)
     return 'Hello World!'
 
 @app.route('/_server_data')

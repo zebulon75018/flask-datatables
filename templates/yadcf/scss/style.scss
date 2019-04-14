@@ -1,0 +1,307 @@
+$color-default: #2F5FA9;
+%select--default {
+  margin: 4px;
+  padding: 2px 1px;      
+  height: 30px;
+  font-size: 15px;
+  background: #FDFDFD;
+  border: 1px solid #D0D0D0;
+}
+%button--reset {
+  margin: 6px;
+  padding: 1px 4px;
+  background: #F1F1F1;
+  border: 1px solid #CECECE;
+  font-size: 0;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
+  &:before {
+    margin-right: 2px;
+    content: "\e090";
+    font-family: 'Glyphicons Halflings';
+    font-size: 15px;
+    color: #EC3E15;
+    vertical-align: middle;
+  }
+  &:after {
+    content: "clear";
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: middle;
+    color: #333;
+  }
+  &:hover {
+    background: #ECECEC;
+    border: 1px solid #C1C1C1;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+.lc {
+  &-tags__item {
+    margin-right: 8px;
+    padding: 2px 7px;
+    border-radius: 12px;
+    background: #E4E4E4;
+    border: 1px solid #D0D0D0;
+    text-transform: lowercase;  
+  }
+}
+.yadcf {
+  &-filter-wrapper {
+    display: none;
+  }
+}
+table {
+  th {
+    color: #333;
+    background: #EFEFEF;
+    .button-filter {
+      display: block;
+      float: left;
+      &:before {
+        margin-right: 12px;
+        padding: 3px 5px;
+        content: "\e138";
+        font-family: 'Glyphicons Halflings';
+        font-size: 14px;
+        color: $color-default;
+        background: #F5F5F5;
+        border: 2px solid $color-default;
+        border-radius: 3px;
+      }
+      &:hover:before {
+        color: white;
+        background: $color-default;
+      }
+      &.change:before {
+        content: "\e065";
+      }
+    } 
+    & > div {
+      color: $color-default;
+    }
+  }
+}
+.dataTable {
+  background: #fff;
+}
+.dataTables {
+  &_wrapper {
+    padding: 10px 8px 38px;
+    background: #F9F9F9;
+  }
+  &_filter {
+    float: right;
+    margin: 5px 2px 10px;
+    label {
+      text-transform: uppercase;
+      font-weight: bold !important;
+      color: #828282;
+      input {
+        padding: 2px 6px;
+        lihe-height: 32px;
+        font-weight: normal;
+        color: #333;
+      }
+    }
+  }
+  &_length {
+    margin: 0 8px;
+    float: left;
+    select {
+      @extend %select--default;
+      width: 40px;
+      option {
+      }
+    }
+  }
+  &_paginate {
+    margin: 8px !important;
+    float: right;
+    width: 180px;
+    font-size: 16px;
+    text-decoration: none;
+    a {
+      display: inline-block;
+      margin-left: 8px;
+      line-height: 1;
+      border-bottom: 1px solid;
+      &:hover {
+        text-decoration: none;
+        border-bottom-color: transparent;
+      }
+    }
+    
+  }
+  &_info {
+    margin: 0 4px; 
+    float: left;
+    width: 260px;
+  }
+}
+.sorting {
+  &:after,
+  &_asc:after,
+  &_desc:after {
+    color: #333;
+    font-size: 12px;
+    opacity: .35 !important;
+  }
+  &_asc:after,
+  &_desc:after {
+    opacity: .65 !important;
+  }
+}
+.yadcf-filter {
+  &-wrapper {
+    position: relative;
+    margin: 4px 0 2px;
+    padding: 10px 8px 42px;
+    min-width: 260px;
+    background: #F7F7F7;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 5px 1px rgba(21, 21, 21, 0.05), 0 0 24px 1px rgba(2, 2, 2, 0.1);
+    select {
+      @extend %select--default;
+      option {
+        color: #444;
+      }
+    }
+    input {
+      font-weight: 100;
+      padding: 2px 4px;
+      margin: 0 5px 5px 0 ;
+    }
+   .button-close {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      &:before {
+        content: "\e088";
+        font-family: 'Glyphicons Halflings';
+        font-size: 18px;
+        color: #FFF;
+        text-shadow: 0 0 3px rgba(16, 16, 16, 0.5);
+        transition: transform .3s ease-in;
+      }
+      &:hover:before {
+        transform: rotate(-180deg);
+      }
+    }     
+  }
+  &-reset-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @extend %button--reset;
+  }
+  &-range-number-slider {
+    &-min-tip,
+    &-max-tip {
+      &-inner {
+        font-size: 12px;
+        line-height: 1.7;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    &-min-tip-inner {
+      margin-left: -26px;
+    }
+    &-max-tip-inner {
+      margin-left: 22px;
+    }
+  }
+}
+.ui {
+  &-state {
+    &-default {
+      background: #ECECEC  !important;
+      border-color: #C5C5C5 !important;
+    }
+    &-focus{
+      background: #C5C5C5 !important;
+      border-color: #ABABAB !important;
+    }
+    &-hover {
+      background: #ddd !important;
+      border: 1px solid #ABABAB !important;
+    }
+  }
+  &-slider {
+    margin: 4px 40px 0 30px;    
+    height: 15px;
+    border-radius: 7px;
+    &-range {
+      background: $color-default;
+    }
+    &-handle {
+      width: 21px !important;
+      height: 21px !important;
+      background: #fff;
+      border-radius: 50%;
+      border: 2px solid $color-default;
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+        outline: none;
+      }
+    }
+  }
+  &-autocomplete {
+    border-radius: 0;
+    .ui-state-focus {
+      color: #FFF;
+      background: $color-default;
+      border-color: $color-default;
+      border-radius: 0;
+    }
+  }
+  &-datepicker {
+    &-header {
+      color: #FFF;
+      background: $color-default;
+      border-color: $color-default;
+      border-radius: 0;
+    }
+    &-title {
+      margin: 10px;
+    }
+    &-prev,
+    &-next {
+      background: #FFF;
+      border-radius: 2px;
+      &:hover {
+        margin: 1px;
+        background: #F5F5F5 !important;
+        border: #5F5F5F !important;
+      }
+      span {
+        background-image: none !important;
+        &:before {
+          display: block;
+          text-indent: 0;
+          font-family: 'Glyphicons Halflings';
+          font-size: 16px;
+          line-height: 1;
+          color: $color-default;  
+        }
+      }
+    }
+    &-prev {
+      span:before {
+        content: "\e079";
+      }
+    }
+    &-next {
+      span:before {
+        content: "\e080";
+      }
+    }
+
+  }
+}
+
+

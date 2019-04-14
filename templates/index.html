@@ -17,14 +17,74 @@
 </head>
 
 <script>
+	/*
+	$(document).ready(function() {
+  $('#example').DataTable({
+    "bServerSide": true,
+	"sAjaxSource": "{{ url_for('get_server_data') }}",
+	initComplete: function() {
+      this.api().columns().every(function() {
+        var column = this;
+        var select = $('<select><option value=""></option></select>')
+          .appendTo($(column.header()).empty())
+          .on('change', function() {
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+            );
+
+            column
+              .search(val ? '^' + val + '$' : '', true, false)
+              .draw();
+          });
+
+        column.data().unique().sort().each(function(d, j) {
+          select.append('<option value="' + d + '">' + d + '</option>')
+        });
+      });
+    }
+  });
+});*/
+
 $(document).ready(function() {
-	$('#example').dataTable( {
+
+	//$('#example thead tr').clone(true).appendTo( '#example thead' );
+    //var newTr = $('<tr></tr>');
+	$('#example thead th').each( function () {        
+      var title = $(this).text();
+       $(this).append( '<th><input type="text" placeholder="Search '+title+'" /></th>' );
+     //$('#example thead').append(newTr);
+   });
+
+	  var table =$('#example').dataTable( {
 		//"sDom": "<'row-fluid'<'span6 toolbar'><'span6'>r>t<'row-fluid'<'span6'f><'span6'p>>",
 		"bProcessing": true,
 		"bjQueryUI": true,
+		 "bServerSide": true,
 		"sAjaxSource": "{{ url_for('get_server_data') }}",
-	});
+		initComplete: function () {
+        this.api().columns([0,2,3]).every( function () {
+            var column = this;
+            var select = $('<select class="form-control"><option value=""></option></select>')
+                .appendTo( $(column.footer()).empty() )
+                .on( 'change', function () {
+                    var val = $(this).val();
+                    column.search( this.value ).draw();
+                } );
+ 
+            // Only contains the *visible* options from the first page
+            console.log(column.data().unique());
+ 
+            // If I add extra data in my JSON, how do I access it here besides column.data?
+            column.data().unique().sort().each( function ( d, j ) {
+                select.append( '<option value="'+d+'">'+d+'</option>' )
+            } );
+   	});
+		},
+  });
 } );
+
+
+
 </script>
 
 <body>
