@@ -21,9 +21,13 @@ class ElemInterface:
         self.bSearchable = request.args.get("bSearchable_%d" % n)
         self.bSortable   = request.args.get("bSortable_%d" % n)
 
-        print(self._filter)
-        print(self.bRegex) 
-        print(self.bSearchable)      
+    def match(self, value):
+        if  self._filter =="":
+            return False
+        if self._filter == value:
+            return True
+        else:
+            return False
 
 class requestBuilder:
     def __init__(self,elems, globalsearch):
@@ -38,6 +42,10 @@ class requestBuilder:
         found = False
         for i in range(len(columns)):
                 #data = rb.filterData(data[ columns[i]], i )
+                for elem in self.elems:
+                    if elem.match(data[columns[i]]):
+                        found = True
+
                 if  self.globalsearch =="":
                     found = True
                 else:
