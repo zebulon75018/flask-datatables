@@ -24,7 +24,7 @@ class ElemInterface:
     def match(self, value):
         if  self._filter =="":
             return False
-        if self._filter == value:
+        if self._filter == str(value):
             return True
         else:
             return False
@@ -33,29 +33,45 @@ class requestBuilder:
     def __init__(self,elems, globalsearch):
         self.elems = elems
         self.globalsearch = globalsearch
+        self.isFilterEmpty = self.filterEmpty()
 
     def getRequest(self):
         return ""
-        
-    def filterData(self, data, columns):
-        aaData_row = []
-        found = False
-        for i in range(len(columns)):
-                #data = rb.filterData(data[ columns[i]], i )
-                for elem in self.elems:
-                    if elem.match(data[columns[i]]):
-                        found = True
 
-                if  self.globalsearch =="":
-                    found = True
-                else:
-                    if  str(data[columns[i]]) == self.globalsearch :
-                        found = True
-                aaData_row.append(str(data[columns[i]]).replace('"','\\"'))
-        if found:
-            return aaData_row
-        else: 
+    def filterEmpty(self):
+        if self.globalsearch !="":
+            return False
+        for elem in self.elems:
+            if elem._filter != "":
+                return False
+        return True
+        
+    def filterMatch(self, data, columns):
+        for i in range(len(columns)):
+            if self.globalsearch == str(data[columns[i]]):
+                return True
+        allFilter=True
+        for i in range(len(columns)):
+            if self.elems[i]._filter != "" and self.elems[i].match(data[columns[i]]) is False:
+                allFilter= False 
+        
+        return allFilter
+
+    def copyRow(self,data,columns):
+        aaData_row=[]
+        for i in range(len(columns)):
+            aaData_row.append(str(data[columns[i]]).replace('"','\\"'))
+        return aaData_row
+
+    def filterRow(self,data,columns):
+        if self.filterMatch(data,columns):
+            return self.copyRow(data,columns)
+        else:
             return None
+    
+    
+    def filterData(self, data, columns):
+        return self.filterRow(data,columns)
 
 class BaseDataTables:
     
@@ -96,9 +112,12 @@ class BaseDataTables:
         rb = requestBuilder(self.elems,self.globalsearch) 
         # print(self.result_data)
         for row in self.result_data:
-            aaData_row = rb.filterData( row,self.columns )
-            if aaData_row is not None:
-                aaData_rows.append(aaData_row)
+            if rb.isFilterEmpty:
+                aaData_rows.append(rb.copyRow(row,self.columns))
+            else:
+                aaData_row = rb.filterData( row,self.columns )
+                if aaData_row is not None:
+                    aaData_rows.append(aaData_row)
             
         output['aaData'] = aaData_rows
         return output
