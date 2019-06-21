@@ -3,6 +3,9 @@
 
 create a table with 4 columns in a test.db  
 
+in filter use - the not like
+and < or > the < > in where clause
+
 Flask-DataTables
 ========
 
