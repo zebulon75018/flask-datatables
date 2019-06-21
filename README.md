@@ -1,3 +1,8 @@
+
+## added the support of filter datatable and SQLite 
+
+create a table with 4 columns in a test.db  
+
 Flask-DataTables
 ========
 
